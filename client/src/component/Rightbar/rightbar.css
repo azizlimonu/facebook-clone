@@ -10,6 +10,7 @@
   padding-top: 10px;
   padding-bottom: -20px;
   border-radius: 15px;
+  overflow: hidden;
 }
 
 .rightbar .rightcontainer2 {
@@ -20,6 +21,18 @@
   border-radius: 15px;
   overflow: hidden;
   overflow-y: scroll;
+}
+
+.rightbar .rightcontainer2::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.rightbar .rightcontainer2{
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .rightbar .rightcontainer .adsContainer img {
@@ -45,4 +58,20 @@
 .addfriend {
   width: 20px;
   height: 20px
+}
+
+.rightbar .rightcontainer2 .sugested{
+  margin-top: -10px;
+}
+
+.rightbar .rightcontainer2::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.rightbar .rightcontainer2{
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
