@@ -1,0 +1,29 @@
+.Leftbar {
+  flex: 1;
+}
+
+.NotificationsContainer {
+  width: 18pc;
+  height: 50vh;
+  background-color: white;
+  margin-top: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+
+.NotificationsContainer .notif {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.NotificationsContainer .explore img {
+  width: 80px;
+  margin-left: 4px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-top: 6px;
+}

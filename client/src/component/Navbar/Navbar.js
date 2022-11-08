@@ -32,7 +32,6 @@ const Navbar = () => {
         <Link to='/profile'>
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <img src={profileIcon} className='ProfileImage' alt='' />
-            <p style={{ marginLeft: '5px',display:'flex',textAlign:'center' }}>Aziz Limonu</p>
           </div>
         </Link>
 

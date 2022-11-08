@@ -6,26 +6,20 @@
   border-radius: 10px;
 }
 
-.contentUploadText {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
-
-.contentUploadText .contentWritingpart {
-  width: 400px;
+.contentWritingpart {
+  width: 29pc;
   margin-left: 10px;
   margin-top: 5px;
   height: 4vh;
   border: none;
-  padding: 5px;
 }
 
-.contentUploadText .profileImage {
+.ContentUploadContainer .contentUploadText img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   margin-left: 10px;
+
 }
 
 .icons {
@@ -38,16 +32,4 @@
 .PostIcons {
   width: 24px;
   height: 24px;
-}
-
-button {
-  height: 30px;
-  margin-right: 12px;
-  margin-top: 40px;
-  padding: 6px 20px 6px;
-  border: none;
-  background-color: black;
-  color: white;
-  border-radius: 5px;
-  cursor: painter;
 }

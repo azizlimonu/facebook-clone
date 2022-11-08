@@ -31,7 +31,7 @@ const ContentPost = () => {
     <>
       <div className='ContentUploadContainer'>
         <div className='contentUploadText'>
-          <img src={profileIcon} className='profileImage' alt='profile' />
+          <img src={profileIcon} alt='profile' />
           <input type='text' className='contentWritingpart' placeholder='Write your status...' onChange={(e) => setTile(e.target.value)} />
         </div>
 
@@ -74,7 +74,7 @@ const ContentPost = () => {
               </label>
             </div>
 
-            <button onClick={handlePost}>
+            <button onClick={handlePost} style={{ height: "30px", marginRight: "12px", marginTop: "40px", paddingLeft: "20px", paddingRight: "20px", paddingTop: 6, paddingBottom: 6, border: "none", backgroundColor: "black", color: "white", borderRadius: "5px", cursor: "pointer" }}>
               Post
             </button>
           </div>

@@ -1,18 +1,19 @@
 import React from 'react';
-import Navbar from '../component/Navbar/Navbar';
 import './home.css';
 import MainPost from './MainPost';
+import Navbar from '../component/Navbar/Navbar';
+import Leftbar from '../component/Leftbar/Leftbar';
+import Rightbar from '../component/Rightbar/Rightbar';
 
 const Home = () => {
   return (
     <div className='home'>
       {/* Navbar */}
       <Navbar />
-      <div>
-        {/* LeftBar */}
-        {/* MainPost */}
+      <div className='ComponentContainer'>
+        <Leftbar />
         <MainPost />
-        {/* RightBar */}
+        <Rightbar />
       </div>
     </div>
   )
