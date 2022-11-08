@@ -35,24 +35,11 @@ const ContentPost = () => {
           <input type='text' className='contentWritingpart' placeholder='Write your status...' onChange={(e) => setTile(e.target.value)} />
         </div>
 
-        <div style={{ marginLeft: '10px' }}>
-          {/* {imagePre !== null
-            ?
-            (
-              <img src={imagePre} style={{ width: "410px", height: '250px', objectFit: "cover", borderRadius: '10px' }} alt="" />
-            ) : VideoPre !== null
-              ? 
-              (
-                <video className="PostImages" width="500" height="500" controls >
-                  <source src={VideoPre} type="video/mp4" />
-                </video>
-              )
-              : ''
-          } */}
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div className='buttonContainer'>
+          <div className='btnWrap'>
             <div>
               <label htmlFor='file'>
-                <img src={`${imageIcon}`} className="icons" alt="" />
+                <img src={`${imageIcon}`} className="btnIcons" alt="" />
                 <input
                   type="file"
                   name="file"
@@ -61,10 +48,10 @@ const ContentPost = () => {
                   onChange={handleUploadImg} />
               </label>
 
-              <img src={`${emojiIcon}`} className="icons" alt="" />
+              <img src={`${emojiIcon}`} className="btnIcons" alt="" />
 
               <label htmlFor='file2'>
-                <img src={`${videoIcon}`} className="icons" alt="" />
+                <img src={`${videoIcon}`} className="btnIcons" alt="" />
                 <input
                   type="file"
                   name="file2"

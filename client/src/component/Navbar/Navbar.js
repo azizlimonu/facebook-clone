@@ -35,9 +35,9 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <div style={{ marginRight: '30px', marginLeft: '20px', cursor: 'pointer' }} onClick={handleLogout}>
+        {/* <div style={{ marginRight: '30px', marginLeft: '20px', cursor: 'pointer' }} onClick={handleLogout}>
           <p>Logout</p>
-        </div>
+        </div> */}
       </div>
     </div>
   )

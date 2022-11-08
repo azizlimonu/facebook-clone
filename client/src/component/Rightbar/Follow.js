@@ -26,8 +26,8 @@ const Follow = () => {
   // }
 
   return (
-    <>
-      <div className='sugested' >
+    <div className='following'>
+      <div style={{ marginTop: "-10px" }} >
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           {/* <Link to={`/Profile/${userdetails._id}`}> */}
           <div>
@@ -201,7 +201,7 @@ const Follow = () => {
         </div>
       </div>
       {/* ================================================================= */}
-    </>
+    </div >
   )
 }
 

@@ -23,12 +23,12 @@
   overflow-y: scroll;
 }
 
-.rightbar .rightcontainer2::-webkit-scrollbar {
+.rightbar .rightcontainer2 .follow::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.rightbar .rightcontainer2{
+.rightbar .rightcontainer2 .follow{
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;

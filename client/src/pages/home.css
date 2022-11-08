@@ -2,9 +2,10 @@
   background-color: rgb(235, 238, 242);
 }
 
-.ComponentContainer {
-  width: 90%;
+.home .ComponentContainer {
+  width: 80%;
   margin: auto;
   display: flex;
-  justify-content: space-between;
+  display: flex;
+  justify-content: center;
 }
