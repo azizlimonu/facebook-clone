@@ -4,10 +4,9 @@
 
 .rightbar .rightcontainer {
   width: 20pc;
-  height: 28vh;
+  height: 26vh;
   background-color: white;
   margin-top: 20px;
-  padding-top: 10px;
   padding-bottom: -20px;
   border-radius: 15px;
   overflow: hidden;
@@ -41,7 +40,7 @@
   object-fit: cover;
 }
 
-.adsContainer {
+.rightbar .rightcontainer .adsContainer {
   display: flex;
   align-items: center;
   margin-left: 10px;

@@ -1,6 +1,6 @@
 import React from 'react'
-import ContentPost from '../component/ContentPost/ContentPost'
-import Post from '../component/Post/Post'
+import ContentPost from '../ContentPost/ContentPost'
+import Post from '../Post/Post';
 
 const MainPost = () => {
   return (

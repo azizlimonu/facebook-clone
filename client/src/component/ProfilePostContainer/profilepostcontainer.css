@@ -1,4 +1,8 @@
-.PostContainer {
+/* .PostContainer{
+
+} */
+
+.SubPostContainer {
   width: 93%;
   background-color: white;
   margin-top: 20px;
@@ -28,8 +32,6 @@
 .moreicons {
   width: 20px;
   margin-left: 380px;
-  padding-right: 5px;
-  margin-right: 10px;
 }
 
 .commentinput {
