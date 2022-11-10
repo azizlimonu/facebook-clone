@@ -1,11 +1,6 @@
-.home {
-  background-color: rgb(235, 238, 242);
-}
-
-.home .ComponentContainer {
-  width: 80%;
-  margin: auto;
-  display: flex;
-  display: flex;
-  justify-content: center;
+.Home{
+  position: relative;
+  display: grid;
+  grid-template-columns: 18rem auto 20rem;
+  gap: 1rem;
 }

@@ -17,9 +17,11 @@ const PostSchema = new mongoose.Schema({
   },
   like: {
     type: Array,
+    default:0
   },
   dislike: {
     type: Array,
+    default:0
   },
   comments: [
     {

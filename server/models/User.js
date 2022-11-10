@@ -25,12 +25,7 @@ const UserSchema = new mongoose.Schema({
   },
   profile: {
     type: String,
-  },
-  verifed: {
-    type: Boolean,
-    required: true,
-    default: false
   }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User',UserSchema)
