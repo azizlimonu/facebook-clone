@@ -1,0 +1,63 @@
+.Auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  gap: 10rem;
+  position: relative;
+}
+
+.Auth>div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* left side */
+.authleft {
+  gap: 2rem;
+}
+
+.authleft>img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.Webname>h1 {
+  font-size: 4rem;
+  background-color: red;
+
+  /* Create the gradient. */
+  background-image: var(--buttonBg);
+
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+.Webname>h6 {
+  font-size: .85rem;
+  margin-left: 10px;
+}
+
+/* right side */
+.authForm {
+  background-color: var(--cardColor);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.authForm>div {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
