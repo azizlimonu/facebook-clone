@@ -59,9 +59,13 @@ const followUser = async (req, res) => {
       res.status(403).json('Action Forbidden')
     } else {
       const followUser = await UserModel.findById(id);
+      const followingUser = await UserModel.findById(currentUserId);
+
       if (!followUser.followers.includes(currentUserId)) {
-        await UserModel.updateOne({ id }, { $push: { followers: currentUserId } })
-        await UserModel.updateOne({ currentUserId }, { $push: { following: id } })
+        // Push following target user to the list following from the current User ID
+        await followUser.updateOne({ $push: { followers: currentUserId } });
+        // Push followers Current User Id to the list of the followers Target Id
+        await followingUser.updateOne({ $push: { following: id } });
 
         res.status(200).json("User followed!");
       } else {
@@ -73,6 +77,30 @@ const followUser = async (req, res) => {
   }
 }
 
-const unfollowUser = async (req, res) => { }
+const unfollowUser = async (req, res) => {
+  const id = req.params.id;
+  const { currentUserId } = req.body;
+  try {
+    if (currentUserId === id) {
+      res.status(403).json('Action Forbidden')
+    } else {
+      const unfollowUser = await UserModel.findById(id);
+      const unfollowingUser = await UserModel.findById(currentUserId);
+
+      if (unfollowUser.followers.includes(currentUserId)) {
+        // removing followers list from the target User ID
+        await unfollowUser.updateOne({ $pull: { followers: currentUserId } });
+        // removing following from the list following from the current User ID
+        await unfollowingUser.updateOne({ $pull: { following: id } });
+
+        res.status(200).json("User unfollowed!");
+      } else {
+        res.status(403).json("You are not following this User")
+      }
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
 
 module.exports = { getUser, getAllUsers, updateUser, deleteUser, followUser, unfollowUser };
