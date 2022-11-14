@@ -5,8 +5,10 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
+// import Routes
 const UserRoutes = require('./routes/UserRoutes');
 const AuthRoutes = require('./routes/AuthRoutes');
+const PostRoutes = require('./routes/PostRoutes');
 
 const PORT = process.env.PORT || 3500;
 
@@ -34,3 +36,4 @@ app.use(cors());
 // usage Routes
 app.use('/user', UserRoutes);
 app.use('/auth', AuthRoutes);
+app.use('/post', PostRoutes);

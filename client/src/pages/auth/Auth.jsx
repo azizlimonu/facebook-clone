@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './Auth.css';
 import Logo from '../../img/logo.png';
 import { useNavigate } from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { logIn, signUp } from '../../app/actions/AuthActions'
 
 const Auth = () => {
   const initialState = {
@@ -12,17 +13,16 @@ const Auth = () => {
     password: "",
     confirmpass: "",
   }
-
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.authReducer.loading);
   const [isSignUp, setIsSignUp] = useState(false);
   const [data, setData] = useState(initialState);
   const [confirmPass, setConfirmPass] = useState(true);
   const navigate = useNavigate();
-  const loading = false
 
   // Reset the form
   const resetForm = () => {
     setData(initialState);
-    setConfirmPass(confirmPass);
   }
 
   // Handle Form Change
@@ -33,7 +33,17 @@ const Auth = () => {
   // Handle Form input
   const handleSubmit = (e) => {
     e.preventDefault();
+    // validation pass
+    if (isSignUp) {
+      if (data.password === data.confirmpass) {
+        dispatch(signUp(data))
+      } else {
+        setConfirmPass(false)
+      }
+    }
     console.log(data);
+    dispatch(logIn(data));
+    resetForm();
   }
 
   return (
@@ -129,7 +139,6 @@ const Auth = () => {
                 textDecoration: "underline",
               }}
               onClick={() => {
-                resetForm();
                 setIsSignUp(!isSignUp);
               }}
             >
@@ -142,7 +151,11 @@ const Auth = () => {
               type="Submit"
               disabled={loading}
             >
-              {loading ? "Loading..." : isSignUp ? "SignUp" : "Login"}
+              {loading ? "Loading..."
+                : isSignUp
+                  ? "SignUp"
+                  : "Login"
+              }
             </button>
           </div>
         </form>
