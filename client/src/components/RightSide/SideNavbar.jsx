@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const SideNavbar = () => {
   return (
     <div className='navIcons'>
-      <Link to='../home'>
+      <Link to='/home'>
         <img src={Home} alt='home' />
       </Link>
       <UilSetting />

@@ -2,16 +2,27 @@ import React, { useEffect, useState } from "react";
 import "./InfoCard.css";
 import { UilPen } from "@iconscout/react-unicons";
 import ProfileModal from "./ProfileModal";
-// import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const InfoCard = () => {
+  const { user } = useSelector((state) => state.authReducer.authData);
   const [toggleModal, setToggleModal] = useState(false);
+  const dispatch = useDispatch();
+  const params = useParams();
+  const profileUserId = params.id;
+  const [profileUser, setProfileUser] = useState({});
+
+  useEffect(() => {
+
+  },[]);
 
   const handleModal = () => {
     setToggleModal(!toggleModal);
   }
 
-  const handleLogOut=()=>{
+  const handleLogOut = () => {
     console.log('Logout Triggered');
   }
 

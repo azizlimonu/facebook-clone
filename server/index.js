@@ -32,6 +32,8 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use(cors());
 
 // serve image inside public folder
+app.use(express.static('public'));
+app.use('/images',express.static('images'));
 
 // usage Routes
 app.use('/user', UserRoutes);

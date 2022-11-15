@@ -15,7 +15,7 @@ const PostShare = () => {
   const loading = useSelector((state) => state.postReducer.uploading);
   const [image, setImage] = useState(null);
   const desc = useRef();
-  // const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
+  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
 
   // handle Image Change
   const onImageChange = (event) => {
@@ -65,7 +65,11 @@ const PostShare = () => {
   return (
     <div className="PostShare">
       <img
-        src={profileImg}
+        src={
+          user.profilePicture
+            ? serverPublic + user.profilePicture
+            : serverPublic + "defaultProfile.png"
+        }
         alt="Profile"
       />
       <div>

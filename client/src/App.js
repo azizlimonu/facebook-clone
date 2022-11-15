@@ -36,7 +36,7 @@ const App = () => {
               : <Auth />}
         />
         <Route
-          path='/profile'
+          path='/profile/:id'
           element={
             user
               ? <Profile />
