@@ -10,9 +10,6 @@ const Home = () => {
       <ProfileSide />
       <PostSide />
       <RightSide />
-      {/* Profile Side */}
-      {/* Post Side in middle */}
-      {/* Right Side */}
     </div>
   )
 }

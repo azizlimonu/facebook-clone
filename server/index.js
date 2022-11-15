@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const UserRoutes = require('./routes/UserRoutes');
 const AuthRoutes = require('./routes/AuthRoutes');
 const PostRoutes = require('./routes/PostRoutes');
-
+const UploadRoutes=require('./routes/UploadRoute');
 const PORT = process.env.PORT || 3500;
 
 const connectDB = async () => {
@@ -36,4 +36,5 @@ app.use(cors());
 // usage Routes
 app.use('/user', UserRoutes);
 app.use('/auth', AuthRoutes);
-app.use('/post', PostRoutes);
+app.use('/posts', PostRoutes);
+app.use('/upload',UploadRoutes);

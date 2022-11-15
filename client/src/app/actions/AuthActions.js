@@ -5,7 +5,6 @@ export const logIn = (formData, navigate) => async (dispatch) => {
   try {
     const { data } = await AuthLogin(formData);
     dispatch({ type: "AUTH_SUCCESS", data: data });
-    navigate("../home", { replace: true });
   } catch (error) {
     console.log(error);
     dispatch({ type: "AUTH_FAIL" });
@@ -17,7 +16,6 @@ export const signUp = (formData, navigate) => async (dispatch) => {
   try {
     const { data } = await AuthSignUp(formData);
     dispatch({ type: "AUTH_SUCCESS", data: data });
-    navigate("../home", { replace: true });
   } catch (error) {
     console.log(error);
     dispatch({ type: "AUTH_FAIL" });

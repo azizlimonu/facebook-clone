@@ -40,9 +40,9 @@ const Auth = () => {
       } else {
         setConfirmPass(false)
       }
+    } else {
+      dispatch(logIn(data));
     }
-    console.log(data);
-    dispatch(logIn(data));
     resetForm();
   }
 
@@ -112,6 +112,7 @@ const Auth = () => {
                 required
                 type="password"
                 className="infoInput"
+                value={data.confirmpass}
                 name="confirmpass"
                 placeholder="Confirm Password"
                 onChange={handleChange}
