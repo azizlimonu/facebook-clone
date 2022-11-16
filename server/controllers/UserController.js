@@ -1,5 +1,7 @@
 const UserModel = require('../models/userModel');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const getUser = async (req, res) => {
   const id = req.params.id;
@@ -15,20 +17,38 @@ const getUser = async (req, res) => {
     res.status(500).json(error);
   }
 }
-const getAllUsers = async (req, res) => { }
+const getAllUsers = async (req, res) => {
+  try {
+    let users = await UserModel.find();
+    users = users.map((user) => {
+      const { password, ...otherDetails } = user._doc
+      return otherDetails
+    })
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+}
 
 const updateUser = async (req, res) => {
   const id = req.params.id;
-  const { currentUserId, currentUserAdminStatus, password } = req.body;
-
-  if (id === currentUserId || currentUserAdminStatus) {
+  console.log("data receive",req.body);
+  const { _id, password } = req.body;
+  console.log(_id);
+  if (id === _id) {
     try {
       if (password) {
         const salt = await bcrypt.genSalt(10);
         req.body.password = await bcrypt.hash(password, salt);
       }
       const user = await UserModel.findByIdAndUpdate(id, req.body, { new: true });
-      res.status(200).json(user);
+      const token = jwt.sign(
+        { username: user.username, id: user._id },
+        process.env.ACCESS_TOKEN_SECRET,
+        { expiresIn: "1h" }
+      );
+      console.log({user,token})
+      res.status(200).json({ user, token });
     } catch (error) {
       res.status(500).json(error)
     }

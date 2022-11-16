@@ -3,7 +3,7 @@ import './Profile.css';
 import PostSide from '../../components/PostSide/PostSide';
 import ProfileCard from '../../components/ProfileCard/ProfileCard';
 import RightSide from '../../components/RightSide/RightSide';
-import ProfileLeft from '../../components/ProfileSide/ProfileSide'
+import ProfileLeft from '../../components/ProfileLeft/ProfileLeft';
 
 const Profile = () => {
 

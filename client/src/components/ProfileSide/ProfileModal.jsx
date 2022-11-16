@@ -1,14 +1,34 @@
 import React, { useState } from "react";
 import { Modal, useMantineTheme } from "@mantine/core";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { uploadImage } from "../../api/UploadRequest";
+import { updateUser } from '../../app/actions/userActions';
 
-const ProfileModal = ({ toggleModal, setToggleModal }) => {
+const ProfileModal = ({ toggleModal, setToggleModal, data }) => {
+  const initialState = {
+    firstname: "",
+    lastname: "",
+    worksAt: "",
+    livesIn: "",
+    country: "",
+    relationship: "",
+    coverPicture: "",
+  }
+
+  const { user } = useSelector((state) => state.authReducer.authData);
+  const { password, ...other } = data;
   const theme = useMantineTheme();
+  const [formData, setFormData] = useState(initialState);
   const [profileImage, setProfileImage] = useState(null);
   const [coverImage, setCoverImage] = useState(null);
-  const [formData, setFormData] = useState({});
+  const dispatch = useDispatch();
+  const params = useParams();
+
 
   const handleChange = (e) => {
-    setFormData({...formData,[e.target.name]:e.target.value});
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const onImageChange = (event) => {
@@ -23,9 +43,38 @@ const ProfileModal = ({ toggleModal, setToggleModal }) => {
   // form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Submit Triggered');
-    console.log(formData)
+    let UserData = formData;
+    if (profileImage) {
+      const data = new FormData();
+      const fileName = Date.now() + profileImage.name;
+      data.append("name", fileName);
+      data.append("file", profileImage);
+      UserData.profilePicture = fileName;
+      try {
+        dispatch(uploadImage(data));
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    if (coverImage) {
+      const data = new FormData();
+      const fileName = Date.now() + coverImage.name;
+      data.append("name", fileName);
+      data.append("file", coverImage);
+      UserData.coverPicture = fileName;
+      try {
+        dispatch(uploadImage(data));
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    console.log("form data ",formData);
+    dispatch(updateUser(params.id, UserData));
+    console.log("id : ",params.id);
+    console.log("userdata", UserData);
+    setToggleModal(false);
   };
+
 
   return (
     <Modal
@@ -43,7 +92,7 @@ const ProfileModal = ({ toggleModal, setToggleModal }) => {
       <form className="infoForm" onSubmit={handleSubmit}>
         <h3>Your Info</h3>
         <div>
-        <input
+          <input
             value={formData.firstname}
             onChange={handleChange}
             type="text"
@@ -104,12 +153,16 @@ const ProfileModal = ({ toggleModal, setToggleModal }) => {
 
         <div>
           Profile image
-          <input type="file" name="profileImage" onChange={onImageChange} />
+          <input type="file" name="profilePicture" onChange={onImageChange} />
           Cover image
-          <input type="file" name="coverImage" onChange={onImageChange} />
+          <input type="file" name="coverPicture" onChange={onImageChange} />
         </div>
 
-        <button className="button infoButton" type="submit">
+        <button
+          className="button infoButton"
+          type="submit"
+          onClick={handleSubmit}
+        >
           Update
         </button>
       </form>

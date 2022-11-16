@@ -7,7 +7,7 @@ const ProfileCard = ({ location }) => {
   const { user } = useSelector((state) => state.authReducer.authData);
   const posts = useSelector((state) => state.postReducer.posts)
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
-  console.log(location);
+  // console.log(location);
 
   return (
     <div className="ProfileCard">
