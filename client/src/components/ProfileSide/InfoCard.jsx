@@ -19,11 +19,12 @@ const InfoCard = () => {
 
   useEffect(() => {
     const fetchProfileUser = async () => {
+      // if that account is your account if not than fetch get user 
       if (profileUserId === user._id) {
         setProfileUser(user);
       } else {
-        console.log("fetching")
         const profileUser = await UserApi.getUser(profileUserId);
+        console.log("fetching get user sccs")
         setProfileUser(profileUser);
       }
     };

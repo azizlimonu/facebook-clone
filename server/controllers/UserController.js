@@ -34,7 +34,7 @@ const updateUser = async (req, res) => {
   const id = req.params.id;
   console.log("data receive",req.body);
   const { _id, password } = req.body;
-  console.log(_id);
+  // console.log(_id);
   if (id === _id) {
     try {
       if (password) {
@@ -47,7 +47,7 @@ const updateUser = async (req, res) => {
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: "1h" }
       );
-      console.log({user,token})
+      // console.log({user,token})
       res.status(200).json({ user, token });
     } catch (error) {
       res.status(500).json(error)

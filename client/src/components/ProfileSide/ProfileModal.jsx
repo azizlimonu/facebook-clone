@@ -20,7 +20,7 @@ const ProfileModal = ({ toggleModal, setToggleModal, data }) => {
   const { user } = useSelector((state) => state.authReducer.authData);
   const { password, ...other } = data;
   const theme = useMantineTheme();
-  const [formData, setFormData] = useState(initialState);
+  const [formData, setFormData] = useState(other);
   const [profileImage, setProfileImage] = useState(null);
   const [coverImage, setCoverImage] = useState(null);
   const dispatch = useDispatch();
@@ -34,9 +34,9 @@ const ProfileModal = ({ toggleModal, setToggleModal, data }) => {
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0];
-      event.target.name === "profileImage"
+      event.target.name === "profilePicture"
         ? setProfileImage(img)
-        : setCoverImage(img);
+        : setCoverImage(img)
     }
   };
 
@@ -68,10 +68,10 @@ const ProfileModal = ({ toggleModal, setToggleModal, data }) => {
         console.log(err);
       }
     }
-    console.log("form data ",formData);
+    // console.log("form data ",formData);
     dispatch(updateUser(params.id, UserData));
-    console.log("id : ",params.id);
-    console.log("userdata", UserData);
+    // console.log("id : ",params.id);
+    // console.log("userdata", UserData);
     setToggleModal(false);
   };
 
