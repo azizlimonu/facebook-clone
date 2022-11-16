@@ -32,7 +32,7 @@ const getAllUsers = async (req, res) => {
 
 const updateUser = async (req, res) => {
   const id = req.params.id;
-  console.log("data receive",req.body);
+  console.log("data receive", req.body);
   const { _id, password } = req.body;
   // console.log(_id);
   if (id === _id) {
@@ -73,17 +73,17 @@ const deleteUser = async (req, res) => {
 }
 const followUser = async (req, res) => {
   const id = req.params.id
-  const { currentUserId } = req.body
+  const { _id } = req.body
   try {
-    if (currentUserId === id) {
+    if (_id === id) {
       res.status(403).json('Action Forbidden')
     } else {
       const followUser = await UserModel.findById(id);
-      const followingUser = await UserModel.findById(currentUserId);
+      const followingUser = await UserModel.findById(_id);
 
-      if (!followUser.followers.includes(currentUserId)) {
+      if (!followUser.followers.includes(_id)) {
         // Push following target user to the list following from the current User ID
-        await followUser.updateOne({ $push: { followers: currentUserId } });
+        await followUser.updateOne({ $push: { followers: _id } });
         // Push followers Current User Id to the list of the followers Target Id
         await followingUser.updateOne({ $push: { following: id } });
 
@@ -99,17 +99,17 @@ const followUser = async (req, res) => {
 
 const unfollowUser = async (req, res) => {
   const id = req.params.id;
-  const { currentUserId } = req.body;
+  const { _id } = req.body;
   try {
-    if (currentUserId === id) {
+    if (_id === id) {
       res.status(403).json('Action Forbidden')
     } else {
       const unfollowUser = await UserModel.findById(id);
-      const unfollowingUser = await UserModel.findById(currentUserId);
+      const unfollowingUser = await UserModel.findById(_id);
 
-      if (unfollowUser.followers.includes(currentUserId)) {
+      if (unfollowUser.followers.includes(_id)) {
         // removing followers list from the target User ID
-        await unfollowUser.updateOne({ $pull: { followers: currentUserId } });
+        await unfollowUser.updateOne({ $pull: { followers: _id } });
         // removing following from the list following from the current User ID
         await unfollowingUser.updateOne({ $pull: { following: id } });
 
