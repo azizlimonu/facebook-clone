@@ -5,6 +5,7 @@ import Home from './pages/home/Home';
 import Auth from './pages/auth/Auth';
 import Profile from './pages/Profile/Profile';
 import { useSelector } from 'react-redux';
+import Chat from './pages/chat/Chat';
 
 const App = () => {
   const user = useSelector((state) => state.authReducer.authData)
@@ -42,6 +43,13 @@ const App = () => {
               ? <Profile />
               : <Navigate to='/home' />}
         />
+
+        <Route
+          path='/chat'
+          element={
+            user
+              ? <Chat />
+              : <Navigate to='/auth' />} />
         <Route
           path="*"
           element={

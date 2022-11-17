@@ -13,7 +13,7 @@ const SideNavbar = () => {
       </Link>
       <UilSetting />
       <img src={Notification} alt='' />
-      <Link to='..chat'>
+      <Link to='/chat'>
         <img src={Comment} alt='' />
       </Link>
     </div>
