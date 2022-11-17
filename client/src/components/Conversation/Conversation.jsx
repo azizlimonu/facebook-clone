@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { getUser } from '../../api/UserRequest';
 
-const Conversation = ({ data, currentUser }) => {
+const Conversation = ({ data, currentUser, online }) => {
   const [userData, setUserData] = useState(null);
   const dispatch = useDispatch();
 
@@ -26,7 +26,6 @@ const Conversation = ({ data, currentUser }) => {
     getUserData();
   }, []);
 
-  const online = true;
   return (
     <>
       <div className='follower conversation'>
