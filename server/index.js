@@ -9,7 +9,10 @@ const bodyParser = require('body-parser');
 const UserRoutes = require('./routes/UserRoutes');
 const AuthRoutes = require('./routes/AuthRoutes');
 const PostRoutes = require('./routes/PostRoutes');
-const UploadRoutes=require('./routes/UploadRoute');
+const UploadRoutes = require('./routes/UploadRoute');
+const ChatRoutes=require('./routes/ChatRoute');
+const MessageRoutes=require('./routes/MessageRoute');
+
 const PORT = process.env.PORT || 3500;
 
 const connectDB = async () => {
@@ -33,10 +36,12 @@ app.use(cors());
 
 // serve image inside public folder
 app.use(express.static('public'));
-app.use('/images',express.static('images'));
+app.use('/images', express.static('images'));
 
 // usage Routes
 app.use('/user', UserRoutes);
 app.use('/auth', AuthRoutes);
 app.use('/posts', PostRoutes);
-app.use('/upload',UploadRoutes);
+app.use('/upload', UploadRoutes);
+app.use('/chat', ChatRoutes);
+app.use('/message', MessageRoutes);
