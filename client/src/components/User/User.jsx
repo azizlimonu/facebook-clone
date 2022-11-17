@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import profileImg from '../../img/img3.png';
 import { followUser, unfollowUser } from '../../app/actions/userActions';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -8,7 +7,7 @@ const User = ({ person }) => {
   const publicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user } = useSelector((state) => state.authReducer.authData);
   const dispatch = useDispatch();
-  const [following, setFollowing] = useState(false);
+  const [following, setFollowing] = useState(person.followers.includes(user._id));
 
   const handleFollow = () => {
     if (following) {

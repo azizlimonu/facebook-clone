@@ -26,7 +26,7 @@ const FollowersCard = () => {
       {person?.map((person, idx) => {
         if (person._id !== user._id) {
           return <User person={person} key={idx} />
-        }
+        } return null;
       })}
 
       <span onClick={() => setToggleModal(true)}>
